@@ -1,0 +1,218 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="The Evan Dickerson Awards — celebrating excellence in bluegrass music. Cast your vote for this year's honorees.">
+  <title>The Evan Dickerson Awards</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;0,700;1,400&family=Source+Serif+4:ital,wght@0,400;0,600;1,400&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+
+  <header class="site-header">
+    <div class="container header-inner">
+      <a href="#" class="logo-link" aria-label="The Evan Dickerson Awards — Home">
+        <img src="assets/logo-horizontal.jpg" alt="The Evan Dickerson Awards" width="320" height="104">
+      </a>
+      <button class="menu-toggle" aria-label="Toggle navigation" aria-expanded="false">☰</button>
+      <nav>
+        <ul class="site-nav" id="site-nav">
+          <li><a href="#about">About</a></li>
+          <li><a href="#categories">Categories</a></li>
+          <li><a href="#how-it-works">How It Works</a></li>
+          <li>
+            <a href="#vote" class="nav-cta" data-vote-trigger>Vote Now</a>
+          </li>
+        </ul>
+      </nav>
+    </div>
+  </header>
+
+  <main>
+    <div id="main-content">
+    <section class="hero">
+      <div class="container">
+        <span class="hero-badge">Est. Annual Tradition</span>
+        <h1>Celebrating Excellence<br>in Bluegrass</h1>
+        <p class="hero-subtitle">
+          The Evan Dickerson Awards honor the artists, albums, and performances
+          that define the very best of bluegrass music each year.
+        </p>
+        <div class="hero-cta-group">
+          <a href="#vote" class="btn btn-primary" data-vote-trigger>
+            Cast Your Vote
+          </a>
+          <a href="#about" class="btn btn-secondary">Learn More</a>
+        </div>
+
+        <svg class="mountain-divider" viewBox="0 0 480 48" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+          <path d="M0 48 L80 20 L160 38 L240 8 L320 32 L400 14 L480 36 L480 48 Z" fill="rgba(30,58,95,0.5)"/>
+          <path d="M0 48 L120 28 L200 42 L280 18 L360 34 L480 22 L480 48 Z" fill="rgba(201,168,76,0.12)"/>
+        </svg>
+      </div>
+    </section>
+
+    <section class="about" id="about">
+      <div class="container">
+        <p class="section-label">About the Awards</p>
+        <h2 class="section-title">A Tradition of Recognition</h2>
+        <p class="section-intro">
+          Named in honor of Evan Dickerson, whose passion for bluegrass music inspired
+          generations of listeners and musicians alike, these awards celebrate the
+          artistry, dedication, and spirit of the bluegrass community.
+        </p>
+        <p class="section-intro">
+          Each year, fans and peers come together to recognize outstanding achievement
+          across the genre — from breakthrough new voices to lifetime contributions
+          that keep the tradition alive.
+        </p>
+
+        <div class="about-grid">
+          <div class="about-card">
+            <h3>Community-Driven</h3>
+            <p>
+              Winners are chosen by the people who know and love bluegrass best.
+              Your vote shapes who receives recognition each year.
+            </p>
+          </div>
+          <div class="about-card">
+            <h3>Built to Endure</h3>
+            <p>
+              Categories and honorees may change with each season, but the mission
+              remains the same: to honor excellence with dignity and permanence.
+            </p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="categories" id="categories">
+      <div class="container">
+        <div class="string-ornament" aria-hidden="true"><span>♪</span></div>
+        <p class="section-label">Award Categories</p>
+        <h2 class="section-title">Recognizing the Finest</h2>
+        <p class="section-intro">
+          Nominees are evaluated across a range of categories that reflect the breadth
+          and depth of bluegrass music. Cast your vote in each category that matters to you.
+        </p>
+
+        <div class="category-grid">
+          <article class="category-card">
+            <h3>Artist of the Year</h3>
+            <p>Honoring an individual whose artistry and impact defined the year in bluegrass.</p>
+          </article>
+          <article class="category-card">
+            <h3>Album of the Year</h3>
+            <p>Celebrating a full-length release that stands as a landmark achievement.</p>
+          </article>
+          <article class="category-card">
+            <h3>Song of the Year</h3>
+            <p>Recognizing a single track that captured hearts and moved the genre forward.</p>
+          </article>
+          <article class="category-card">
+            <h3>Band of the Year</h3>
+            <p>Awarded to the ensemble whose collective performance set the standard.</p>
+          </article>
+          <article class="category-card">
+            <h3>New Artist of the Year</h3>
+            <p>Spotlighting a rising voice making an extraordinary early impression.</p>
+          </article>
+          <article class="category-card">
+            <h3>Instrumentalist of the Year</h3>
+            <p>Honoring virtuosity and musical voice on banjo, fiddle, mandolin, and beyond.</p>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section id="how-it-works">
+      <div class="container">
+        <p class="section-label">How It Works</p>
+        <h2 class="section-title">Three Simple Steps</h2>
+
+        <div class="steps">
+          <div class="step">
+            <div class="step-number">1</div>
+            <h3>Review the Categories</h3>
+            <p>Familiarize yourself with this year's award categories and the nominees in each.</p>
+          </div>
+          <div class="step">
+            <div class="step-number">2</div>
+            <h3>Cast Your Vote</h3>
+            <p>Complete the official ballot through our secure voting form. One submission per person.</p>
+          </div>
+          <div class="step">
+            <div class="step-number">3</div>
+            <h3>Await the Results</h3>
+            <p>Winners will be announced once voting closes. Check back for the official reveal.</p>
+          </div>
+        </div>
+
+        <div class="vote-banner">
+          <h2>Your Voice Matters</h2>
+          <p>
+            Voting is open now. Take a few minutes to honor the artists
+            and music that made this year unforgettable.
+          </p>
+          <a href="#vote" class="btn btn-primary" data-vote-trigger>
+            Open Voting Ballot
+          </a>
+        </div>
+      </div>
+    </section>
+    </div>
+
+    <section class="vote-section" id="vote" hidden>
+      <div class="container">
+        <div class="vote-header">
+          <div class="vote-header-text">
+            <p class="section-label">Official Ballot</p>
+            <h2>2027 First Round Voting</h2>
+            <p>Complete your ballot below. Vote for up to five nominees in each category.</p>
+          </div>
+          <button type="button" class="btn btn-secondary" id="vote-back-home">← Back to Home</button>
+        </div>
+        <div class="vote-form-shell">
+          <div id="vote-form-root"></div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer class="site-footer">
+    <div class="container">
+      <img src="assets/logo-horizontal.jpg" alt="" class="footer-logo" width="240" height="78" aria-hidden="true">
+      <p class="footer-text">
+        <em>The Evan Dickerson Awards</em> — Honoring the heart and soul of bluegrass music.
+      </p>
+      <p class="footer-year" id="footer-year"></p>
+      <a href="admin.html" class="footer-admin">Admin</a>
+    </div>
+  </footer>
+
+  <script src="form-config.js"></script>
+  <script src="vote-form.js"></script>
+  <script>
+    document.getElementById('footer-year').textContent = '© ' + new Date().getFullYear();
+
+    const toggle = document.querySelector('.menu-toggle');
+    const nav = document.getElementById('site-nav');
+
+    toggle.addEventListener('click', () => {
+      const open = nav.classList.toggle('open');
+      toggle.setAttribute('aria-expanded', open);
+    });
+
+    nav.querySelectorAll('a').forEach(link => {
+      link.addEventListener('click', () => {
+        nav.classList.remove('open');
+        toggle.setAttribute('aria-expanded', 'false');
+      });
+    });
+  </script>
+
+</body>
+</html>

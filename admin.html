@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="robots" content="noindex, nofollow">
+  <title>Admin Dashboard — The Evan Dickerson Awards</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;500;600;700&family=Source+Serif+4:wght@400;600&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="admin.css">
+</head>
+<body>
+
+  <div class="login-screen" id="login-screen">
+    <div class="login-card">
+      <img src="assets/logo-horizontal.jpg" alt="The Evan Dickerson Awards" class="login-logo" width="280" height="91">
+      <h1>Admin Dashboard</h1>
+      <p>Enter the admin password to view live voting results.</p>
+      <form class="login-form" id="login-form">
+        <label for="admin-password">Password</label>
+        <input type="password" id="admin-password" name="password" autocomplete="current-password" required>
+        <div class="login-error" id="login-error" aria-live="polite"></div>
+        <button type="submit" class="btn btn-primary">Sign In</button>
+      </form>
+      <p style="margin-top:1.5rem;font-size:0.85rem;color:var(--text-secondary)">
+        <a href="index.html" style="color:var(--gold)">← Back to main site</a>
+      </p>
+    </div>
+  </div>
+
+  <div class="dashboard" id="dashboard" hidden>
+    <header class="admin-header">
+      <div class="container admin-header-inner">
+        <div class="admin-brand">
+          <img src="assets/logo-horizontal.jpg" alt="" width="200" height="65">
+          <div>
+            <h1>Results Dashboard</h1>
+            <span>2027 First Round Voting — Live Tally</span>
+          </div>
+        </div>
+        <div class="admin-actions">
+          <button type="button" class="btn btn-secondary" id="refresh-btn">Refresh</button>
+          <button type="button" class="btn btn-secondary" id="logout-btn">Sign Out</button>
+          <a href="index.html" class="btn btn-secondary">Main Site</a>
+        </div>
+      </div>
+    </header>
+
+    <main class="admin-main">
+      <div class="container">
+        <div class="setup-notice" id="setup-notice" hidden>
+          <strong>Data file not found.</strong> Run <code>sync-responses.ps1</code> to pull the latest responses from Google Sheets into <code>data/responses.json</code>, then refresh this page.
+        </div>
+
+        <div class="status-banner loading" id="status-banner" hidden></div>
+
+        <div class="stats-bar">
+          <div class="stat-card">
+            <div class="stat-label">Total Ballots</div>
+            <div class="stat-value" id="stat-ballots">—</div>
+            <div class="stat-sub">Submitted forms</div>
+          </div>
+          <div class="stat-card">
+            <div class="stat-label">Total Votes</div>
+            <div class="stat-value" id="stat-votes">—</div>
+            <div class="stat-sub">Across all categories</div>
+          </div>
+          <div class="stat-card">
+            <div class="stat-label">Categories</div>
+            <div class="stat-value" id="stat-categories">20</div>
+            <div class="stat-sub">Award categories tracked</div>
+          </div>
+          <div class="stat-card">
+            <div class="stat-label">Merged Duplicates</div>
+            <div class="stat-value" id="stat-merged">—</div>
+            <div class="stat-sub">Similar names grouped</div>
+          </div>
+        </div>
+
+        <p class="dashboard-meta">
+          Data synced: <span id="stat-updated">—</span>
+          · Run <code>sync-responses.ps1</code> to pull latest votes from Google Sheets
+        </p>
+
+        <section class="duplicates-section">
+          <h2>Possible Duplicates &amp; Misspellings</h2>
+          <p class="section-desc">Names that appear similar are grouped together so totals stay accurate.</p>
+          <div class="duplicates-grid" id="duplicates-root"></div>
+        </section>
+
+        <div class="results-toolbar">
+          <h2>Category Results</h2>
+          <input type="search" class="search-box" id="category-search" placeholder="Filter categories…" aria-label="Filter categories">
+        </div>
+
+        <div class="category-grid" id="results-root"></div>
+      </div>
+    </main>
+  </div>
+
+  <script src="form-config.js"></script>
+  <script src="admin-config.js"></script>
+  <script src="admin.js"></script>
+</body>
+</html>
