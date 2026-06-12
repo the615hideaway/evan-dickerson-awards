@@ -195,6 +195,77 @@ a:hover {
   font-style: italic;
 }
 
+/* Countdown timer */
+.countdown {
+  max-width: 36rem;
+  margin: 0 auto 2.5rem;
+  padding: 2rem 2.25rem;
+  background: linear-gradient(135deg, var(--bg-surface) 0%, rgba(30, 58, 95, 0.35) 100%);
+  border: 1px solid var(--border-gold);
+  border-radius: 4px;
+  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.2);
+}
+
+.countdown-label {
+  font-family: var(--font-display);
+  font-size: 0.8rem;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  color: var(--gold);
+  margin-bottom: 0.35rem;
+}
+
+.countdown-date {
+  font-family: var(--font-display);
+  font-size: 1.35rem;
+  color: var(--cream);
+  margin-bottom: 1.5rem;
+}
+
+.countdown-timer {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.75rem;
+}
+
+.countdown-unit {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  min-width: 5.5rem;
+  padding: 0.85rem 0.5rem;
+  background: var(--bg-elevated);
+  border: 1px solid var(--border);
+  border-radius: 3px;
+}
+
+.countdown-value {
+  font-family: var(--font-display);
+  font-size: clamp(2rem, 5vw, 2.75rem);
+  font-weight: 600;
+  color: var(--cream);
+  line-height: 1;
+  font-variant-numeric: tabular-nums;
+}
+
+.countdown-unit-label {
+  margin-top: 0.45rem;
+  font-family: var(--font-display);
+  font-size: 0.72rem;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--text-secondary);
+}
+
+.countdown-separator {
+  font-family: var(--font-display);
+  font-size: 1.75rem;
+  color: var(--gold);
+  opacity: 0.5;
+  padding-bottom: 1.25rem;
+}
+
 .hero-cta-group {
   display: flex;
   flex-wrap: wrap;
@@ -339,6 +410,145 @@ section {
 .about-card p {
   color: var(--text-secondary);
   font-size: 0.98rem;
+}
+
+/* Rules & Information */
+.rules {
+  background: var(--bg-surface);
+  border-block: 1px solid var(--border);
+}
+
+.rules-layout {
+  display: grid;
+  grid-template-columns: 1fr 280px;
+  gap: 2.5rem;
+  align-items: start;
+  margin-top: 2.5rem;
+}
+
+.rules-timeline {
+  position: relative;
+  padding-left: 2rem;
+}
+
+.rules-timeline::before {
+  content: "";
+  position: absolute;
+  left: 0.4rem;
+  top: 0.5rem;
+  bottom: 0.5rem;
+  width: 1px;
+  background: linear-gradient(180deg, var(--border-gold), var(--border));
+}
+
+.rules-item {
+  position: relative;
+  padding-bottom: 1.75rem;
+}
+
+.rules-item:last-child {
+  padding-bottom: 0;
+}
+
+.rules-item-marker {
+  position: absolute;
+  left: -1.85rem;
+  top: 0.35rem;
+  width: 0.75rem;
+  height: 0.75rem;
+  border-radius: 50%;
+  background: var(--bg-deep);
+  border: 2px solid var(--border-gold);
+}
+
+.rules-item-highlight .rules-item-marker {
+  background: var(--gold);
+  border-color: var(--gold);
+  box-shadow: 0 0 12px rgba(201, 168, 76, 0.4);
+}
+
+.rules-item-finale .rules-item-marker {
+  background: var(--navy-light);
+  border-color: var(--cream-muted);
+}
+
+.rules-item-content h3 {
+  font-family: var(--font-display);
+  font-size: 1.2rem;
+  color: var(--cream);
+  margin-bottom: 0.25rem;
+}
+
+.rules-date {
+  font-family: var(--font-display);
+  font-size: 1rem;
+  color: var(--gold);
+  letter-spacing: 0.02em;
+  margin-bottom: 0.4rem;
+}
+
+.rules-item-content p:last-child {
+  color: var(--text-secondary);
+  font-size: 0.95rem;
+}
+
+.rules-item-highlight .rules-item-content {
+  padding: 1rem 1.25rem;
+  margin-left: -0.5rem;
+  background: rgba(201, 168, 76, 0.08);
+  border: 1px solid var(--border-gold);
+  border-radius: 3px;
+}
+
+.rules-sidebar {
+  position: sticky;
+  top: 5.5rem;
+  background: var(--bg-elevated);
+  border: 1px solid var(--border);
+  border-radius: 4px;
+  padding: 1.75rem;
+}
+
+.rules-sidebar h3 {
+  font-family: var(--font-display);
+  font-size: 1.25rem;
+  color: var(--cream);
+  margin-bottom: 1.25rem;
+  padding-bottom: 0.75rem;
+  border-bottom: 1px solid var(--border);
+}
+
+.rules-list {
+  list-style: none;
+  margin-bottom: 1.5rem;
+}
+
+.rules-list li {
+  position: relative;
+  padding-left: 1.25rem;
+  margin-bottom: 1rem;
+  color: var(--text-secondary);
+  font-size: 0.98rem;
+  line-height: 1.6;
+}
+
+.rules-list li::before {
+  content: "♪";
+  position: absolute;
+  left: 0;
+  color: var(--gold);
+  font-size: 0.75rem;
+  top: 0.15rem;
+}
+
+.rules-list strong {
+  color: var(--cream-muted);
+  font-weight: 600;
+}
+
+.rules-sidebar .btn {
+  width: 100%;
+  justify-content: center;
 }
 
 /* Categories */
@@ -501,9 +711,14 @@ section {
   }
 
   .about-grid,
-  .steps {
+  .steps,
+  .rules-layout {
     grid-template-columns: 1fr;
     gap: 1.5rem;
+  }
+
+  .rules-sidebar {
+    position: static;
   }
 }
 
@@ -551,6 +766,20 @@ section {
 
   .hero {
     padding: 3.5rem 0 3rem;
+  }
+
+  .countdown {
+    padding: 1.5rem 1.25rem;
+  }
+
+  .countdown-unit {
+    min-width: 4.25rem;
+    padding: 0.65rem 0.35rem;
+  }
+
+  .countdown-separator {
+    padding-bottom: 1rem;
+    font-size: 1.25rem;
   }
 
   .category-grid {

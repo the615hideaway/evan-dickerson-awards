@@ -21,6 +21,7 @@
       <nav>
         <ul class="site-nav" id="site-nav">
           <li><a href="#about">About</a></li>
+          <li><a href="#rules">Rules</a></li>
           <li><a href="#categories">Categories</a></li>
           <li><a href="#how-it-works">How It Works</a></li>
           <li>
@@ -41,6 +42,28 @@
           The Evan Dickerson Awards honor the artists, albums, and performances
           that define the very best of bluegrass music each year.
         </p>
+
+        <div class="countdown" id="countdown" aria-live="polite">
+          <p class="countdown-label">First Round Voting Opens</p>
+          <p class="countdown-date">April 1, 2027</p>
+          <div class="countdown-timer">
+            <div class="countdown-unit">
+              <span class="countdown-value" id="countdown-days">—</span>
+              <span class="countdown-unit-label">Days</span>
+            </div>
+            <div class="countdown-separator" aria-hidden="true">:</div>
+            <div class="countdown-unit">
+              <span class="countdown-value" id="countdown-hours">—</span>
+              <span class="countdown-unit-label">Hours</span>
+            </div>
+            <div class="countdown-separator" aria-hidden="true">:</div>
+            <div class="countdown-unit">
+              <span class="countdown-value" id="countdown-minutes">—</span>
+              <span class="countdown-unit-label">Minutes</span>
+            </div>
+          </div>
+        </div>
+
         <div class="hero-cta-group">
           <a href="#vote" class="btn btn-primary" data-vote-trigger>
             Cast Your Vote
@@ -85,6 +108,70 @@
               remains the same: to honor excellence with dignity and permanence.
             </p>
           </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="rules" id="rules">
+      <div class="container">
+        <p class="section-label">Rules &amp; Information</p>
+        <h2 class="section-title">2027 Awards Schedule</h2>
+        <p class="section-intro">
+          Key dates and guidelines for the Evan Dickerson Awards voting process.
+        </p>
+
+        <div class="rules-layout">
+          <div class="rules-timeline">
+            <div class="rules-item">
+              <div class="rules-item-marker" aria-hidden="true"></div>
+              <div class="rules-item-content">
+                <h3>Eligibility Period</h3>
+                <p class="rules-date">April 1, 2026 – March 31, 2027</p>
+                <p>Work released or performed during this period is eligible for nomination.</p>
+              </div>
+            </div>
+            <div class="rules-item rules-item-highlight">
+              <div class="rules-item-marker" aria-hidden="true"></div>
+              <div class="rules-item-content">
+                <h3>First Round Voting Begins</h3>
+                <p class="rules-date">April 1, 2027</p>
+                <p>The opening round of community voting gets underway.</p>
+              </div>
+            </div>
+            <div class="rules-item">
+              <div class="rules-item-marker" aria-hidden="true"></div>
+              <div class="rules-item-content">
+                <h3>Second Round Voting Begins</h3>
+                <p class="rules-date">June 1, 2027</p>
+                <p>Top nominees advance to the second round of voting.</p>
+              </div>
+            </div>
+            <div class="rules-item">
+              <div class="rules-item-marker" aria-hidden="true"></div>
+              <div class="rules-item-content">
+                <h3>Final Round Voting Begins</h3>
+                <p class="rules-date">August 1, 2027</p>
+                <p>Finalists are determined in the last round of balloting.</p>
+              </div>
+            </div>
+            <div class="rules-item rules-item-finale">
+              <div class="rules-item-marker" aria-hidden="true"></div>
+              <div class="rules-item-content">
+                <h3>Winners Announced</h3>
+                <p class="rules-date">October 1, 2027</p>
+                <p>Official winners are revealed across all categories.</p>
+              </div>
+            </div>
+          </div>
+
+          <aside class="rules-sidebar">
+            <h3>Voting Guidelines</h3>
+            <ul class="rules-list">
+              <li>Voters may vote for up to <strong>5 nominees per category</strong> in Round 1.</li>
+              <li>All votes are <strong>strictly confidential</strong>.</li>
+            </ul>
+            <a href="#vote" class="btn btn-primary" data-vote-trigger>Go to Ballot</a>
+          </aside>
         </div>
       </div>
     </section>
@@ -154,7 +241,7 @@
         <div class="vote-banner">
           <h2>Your Voice Matters</h2>
           <p>
-            Voting is open now. Take a few minutes to honor the artists
+            First Round Voting opens April 1, 2027. Return then to honor the artists
             and music that made this year unforgettable.
           </p>
           <a href="#vote" class="btn btn-primary" data-vote-trigger>
@@ -212,6 +299,43 @@
         toggle.setAttribute('aria-expanded', 'false');
       });
     });
+
+    (function () {
+      const votingOpens = new Date('2027-04-01T00:00:00');
+      const daysEl = document.getElementById('countdown-days');
+      const hoursEl = document.getElementById('countdown-hours');
+      const minutesEl = document.getElementById('countdown-minutes');
+      const countdownEl = document.getElementById('countdown');
+
+      function pad(n) {
+        return String(n).padStart(2, '0');
+      }
+
+      function updateCountdown() {
+        const now = new Date();
+        const diff = votingOpens - now;
+
+        if (diff <= 0) {
+          daysEl.textContent = '00';
+          hoursEl.textContent = '00';
+          minutesEl.textContent = '00';
+          countdownEl.querySelector('.countdown-label').textContent = 'First Round Voting Is Open';
+          return;
+        }
+
+        const totalMinutes = Math.floor(diff / 60000);
+        const days = Math.floor(totalMinutes / (60 * 24));
+        const hours = Math.floor((totalMinutes % (60 * 24)) / 60);
+        const minutes = totalMinutes % 60;
+
+        daysEl.textContent = String(days);
+        hoursEl.textContent = pad(hours);
+        minutesEl.textContent = pad(minutes);
+      }
+
+      updateCountdown();
+      setInterval(updateCountdown, 60000);
+    })();
   </script>
 
 </body>
