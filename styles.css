@@ -797,6 +797,38 @@ section {
 
 /* ── Vote Form (light ballot for readability) ── */
 
+.vote-form-shell.is-locked {
+  background: var(--bg-surface);
+  border-color: var(--border);
+  box-shadow: none;
+  padding: 3rem 2rem;
+}
+
+.vote-locked {
+  text-align: center;
+  max-width: 36rem;
+  margin: 0 auto;
+}
+
+.vote-locked-heading {
+  font-family: var(--font-display);
+  font-size: clamp(1.6rem, 3.5vw, 2.25rem);
+  font-weight: 600;
+  color: var(--cream);
+  margin-bottom: 1rem;
+}
+
+.vote-locked-text {
+  color: var(--text-secondary);
+  font-size: 1.05rem;
+  margin-bottom: 2rem;
+  line-height: 1.7;
+}
+
+.countdown-locked {
+  margin-bottom: 0;
+}
+
 .vote-form-shell {
   --form-bg: #f7f5f1;
   --form-bg-card: #ffffff;

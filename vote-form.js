@@ -1,10 +1,14 @@
 (function () {
   const formRoot = document.getElementById('vote-form-root');
   const voteSection = document.getElementById('vote');
+  const voteFormShell = document.querySelector('.vote-form-shell');
+  const voteHeaderText = document.querySelector('.vote-header-text');
   const mainContent = document.getElementById('main-content');
   const voteTriggers = document.querySelectorAll('[data-vote-trigger]');
 
   if (!formRoot || !voteSection || typeof VOTE_FORM === 'undefined') return;
+
+  const votingOpen = typeof isVotingOpen === 'function' && isVotingOpen();
 
   function escapeHtml(text) {
     return text
@@ -18,7 +22,58 @@
     return text.toLowerCase().replace(/[^a-z0-9]+/g, '-').replace(/(^-|-$)/g, '');
   }
 
+  function setVoteHeaderLocked() {
+    if (!voteHeaderText) return;
+    voteHeaderText.innerHTML =
+      '<p class="section-label">Official Ballot</p>' +
+      '<h2>2027 First Round Voting</h2>' +
+      '<p>Voting opens ' + escapeHtml(SITE_CONFIG.votingOpensLabel) + '.</p>';
+  }
+
+  function setVoteHeaderOpen() {
+    if (!voteHeaderText) return;
+    voteHeaderText.innerHTML =
+      '<p class="section-label">Official Ballot</p>' +
+      '<h2>2027 First Round Voting</h2>' +
+      '<p>Complete your ballot below. Vote for up to five nominees in each category.</p>';
+  }
+
+  function buildLockedView() {
+    if (voteFormShell) voteFormShell.classList.add('is-locked');
+    setVoteHeaderLocked();
+
+    formRoot.innerHTML =
+      '<div class="vote-locked">' +
+        '<p class="vote-locked-heading">Voting opens ' + escapeHtml(SITE_CONFIG.votingOpensLabel) + '</p>' +
+        '<p class="vote-locked-text">First Round Voting has not yet begun. The ballot will be available when the countdown below reaches zero.</p>' +
+        '<div class="countdown countdown-locked" id="vote-countdown" aria-live="polite">' +
+          '<p class="countdown-label">First Round Voting Opens</p>' +
+          '<p class="countdown-date">' + escapeHtml(SITE_CONFIG.votingOpensLabel) + '</p>' +
+          '<div class="countdown-timer">' +
+            '<div class="countdown-unit">' +
+              '<span class="countdown-value" id="vote-countdown-days">—</span>' +
+              '<span class="countdown-unit-label">Days</span>' +
+            '</div>' +
+            '<div class="countdown-separator" aria-hidden="true">:</div>' +
+            '<div class="countdown-unit">' +
+              '<span class="countdown-value" id="vote-countdown-hours">—</span>' +
+              '<span class="countdown-unit-label">Hours</span>' +
+            '</div>' +
+            '<div class="countdown-separator" aria-hidden="true">:</div>' +
+            '<div class="countdown-unit">' +
+              '<span class="countdown-value" id="vote-countdown-minutes">—</span>' +
+              '<span class="countdown-unit-label">Minutes</span>' +
+            '</div>' +
+          '</div>' +
+        '</div>' +
+      '</div>';
+
+  }
+
   function buildForm() {
+    if (voteFormShell) voteFormShell.classList.remove('is-locked');
+    setVoteHeaderOpen();
+
     const categoriesHtml = VOTE_FORM.categories.map(function (category, index) {
       const slug = slugify(category.name);
       const fieldsHtml = category.fields.map(function (field, fieldIndex) {
@@ -58,6 +113,19 @@
         '<p>Your ballot has been submitted. Thank you for participating in the Evan Dickerson Awards.</p>' +
         '<button type="button" class="btn btn-secondary" id="vote-success-home">Return to Home</button>' +
       '</div>';
+
+    document.getElementById('ballot-form').addEventListener('submit', submitBallot);
+
+    document.getElementById('clear-ballot').addEventListener('click', function () {
+      if (confirm('Clear all entries on this ballot?')) {
+        document.getElementById('ballot-form').reset();
+      }
+    });
+
+    document.getElementById('vote-success-home').addEventListener('click', function () {
+      resetBallot();
+      closeVote();
+    });
   }
 
   function openVote() {
@@ -123,7 +191,11 @@
     }
   }
 
-  buildForm();
+  if (votingOpen) {
+    buildForm();
+  } else {
+    buildLockedView();
+  }
 
   voteTriggers.forEach(function (trigger) {
     trigger.addEventListener('click', function (event) {
@@ -145,19 +217,6 @@
   });
 
   document.getElementById('vote-back-home').addEventListener('click', closeVote);
-
-  document.getElementById('ballot-form').addEventListener('submit', submitBallot);
-
-  document.getElementById('clear-ballot').addEventListener('click', function () {
-    if (confirm('Clear all entries on this ballot?')) {
-      document.getElementById('ballot-form').reset();
-    }
-  });
-
-  document.getElementById('vote-success-home').addEventListener('click', function () {
-    resetBallot();
-    closeVote();
-  });
 
   window.addEventListener('popstate', function () {
     if (location.hash === '#vote') {

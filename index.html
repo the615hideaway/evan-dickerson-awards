@@ -279,6 +279,7 @@
   </footer>
 
   <script src="form-config.js"></script>
+  <script src="countdown.js"></script>
   <script src="vote-form.js"></script>
   <script>
     document.getElementById('footer-year').textContent = '© ' + new Date().getFullYear();
@@ -298,42 +299,7 @@
       });
     });
 
-    (function () {
-      const votingOpens = new Date('2027-04-01T00:00:00');
-      const daysEl = document.getElementById('countdown-days');
-      const hoursEl = document.getElementById('countdown-hours');
-      const minutesEl = document.getElementById('countdown-minutes');
-      const countdownEl = document.getElementById('countdown');
-
-      function pad(n) {
-        return String(n).padStart(2, '0');
-      }
-
-      function updateCountdown() {
-        const now = new Date();
-        const diff = votingOpens - now;
-
-        if (diff <= 0) {
-          daysEl.textContent = '00';
-          hoursEl.textContent = '00';
-          minutesEl.textContent = '00';
-          countdownEl.querySelector('.countdown-label').textContent = 'First Round Voting Is Open';
-          return;
-        }
-
-        const totalMinutes = Math.floor(diff / 60000);
-        const days = Math.floor(totalMinutes / (60 * 24));
-        const hours = Math.floor((totalMinutes % (60 * 24)) / 60);
-        const minutes = totalMinutes % 60;
-
-        daysEl.textContent = String(days);
-        hoursEl.textContent = pad(hours);
-        minutesEl.textContent = pad(minutes);
-      }
-
-      updateCountdown();
-      setInterval(updateCountdown, 60000);
-    })();
+    initCountdowns();
   </script>
 
 </body>
