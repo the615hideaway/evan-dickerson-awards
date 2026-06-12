@@ -26,11 +26,19 @@ jobs:
 
       - name: Setup Pages
         uses: actions/configure-pages@v5
+        with:
+          enablement: true
 
       - name: Upload site
         uses: actions/upload-pages-artifact@v3
         with:
           path: .
+          exclude: |
+            .git/**
+            .github/**
+            google-apps-script/**
+            sync-responses.ps1
+            serve.ps1
 
       - name: Deploy to GitHub Pages
         id: deployment
